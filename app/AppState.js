@@ -6,8 +6,11 @@ import { loadState } from './utils/Store.js'
 class ObservableAppState extends EventEmitter {
 
   /** @type {import('./models/Car.js').Car[]} */
+
   cars = []
 
+  /** @type {import('./models/Houses.js').House[]} */
+  houses = []
 
   /** @type {import('./models/Car.js').Car|null} */
   activeCar = null
