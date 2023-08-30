@@ -36,7 +36,7 @@ export const router = [
   {
     path: '#/houses',
     controller: HousesController,
-    view: 'look at all those houses'
+    // view: 'look at all those houses'
 
   }
 ]

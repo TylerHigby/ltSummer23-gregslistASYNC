@@ -6,7 +6,7 @@ import { Pop } from "../utils/Pop.js"
 import { setHTML } from "../utils/Writer.js"
 
 function _drawCars() {
-    console.log('drawing cars')
+    // console.log('drawing cars')
     let template = ''
     AppState.cars.forEach(car => template += car.CardTemplate)
     setHTML('cars', template)

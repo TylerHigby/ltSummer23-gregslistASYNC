@@ -1,30 +1,30 @@
 import { AppState } from "../AppState.js"
 
 export class Car {
-    constructor(data) {
-        this.id = data.id
-        this.make = data.make
-        this.model = data.model
-        this.imgUrl = data.imgUrl
-        this.year = data.year
-        this.price = data.price
-        this.description = data.description
-        this.engineType = data.engineType
-        // this.creator = data.creator
-        // NOTE: this is reffered as 'flattening' out a data object
-        // NOTE: we are 'adapting' the data object properties into our own property on our class
-        this.creatorId = data.creator.id
-        this.creatorName = data.creator.name
-        this.creatorPicture = data.creator.picture
-    }
+  constructor(data) {
+    this.id = data.id
+    this.make = data.make
+    this.model = data.model
+    this.imgUrl = data.imgUrl
+    this.year = data.year
+    this.price = data.price
+    this.description = data.description
+    this.engineType = data.engineType
+    // this.creator = data.creator
+    // NOTE: this is reffered as 'flattening' out a data object
+    // NOTE: we are 'adapting' the data object properties into our own property on our class
+    this.creatorId = data.creator.id
+    this.creatorName = data.creator.name
+    this.creatorPicture = data.creator.picture
+  }
 
-    // NOTE statics only exist as members of the class
-    // NOTE getters exist on INSTANCES of the class
+  // NOTE statics only exist as members of the class
+  // NOTE getters exist on INSTANCES of the class
 
-    // NOTE Car.CardTemplate ❌❌
-    // NOTE new Car().CardTemplate ✅✅
-    get CardTemplate() {
-        return `       <div class="col-md-10 elevation-5 rounded my-2">
+  // NOTE Car.CardTemplate ❌❌
+  // NOTE new Car().CardTemplate ✅✅
+  get CardTemplate() {
+    return /*html*/`       <div class="col-md-10 elevation-5 rounded my-2">
             <div class="row">
               <div class="col-md-4 p-0">
                 <img class="img-fluid"
@@ -51,17 +51,17 @@ export class Car {
               </div>
             </div>
           </div>`
-    }
+  }
 
 
-    // NOTE statics only exist as members of the class
-    // NOTE getters exist on INSTANCES of the class
+  // NOTE statics only exist as members of the class
+  // NOTE getters exist on INSTANCES of the class
 
-    // NOTE Car.CreateCarForm() ✅✅
-    // NOTE new Car().CreateCarForm() ❌❌
+  // NOTE Car.CreateCarForm() ✅✅
+  // NOTE new Car().CreateCarForm() ❌❌
 
-    static CreateCarForm() {
-        return ` <form class="row p-2" onsubmit="app.CarsController.createCar()">
+  static CreateCarForm() {
+    return ` <form class="row p-2" onsubmit="app.CarsController.createCar()">
 
                 <div class="form-floating mb-3 col-4">
                   <input required type="text" minLength="3" maxLength="15" class="form-control" id="carMake" name="make"
@@ -120,10 +120,10 @@ export class Car {
 
                 </div>
               </form>`
-    }
+  }
 
-    get EditCarForm() {
-        return ` <form class="row p-2" onsubmit="app.CarsController.editCar('${this.id}')">
+  get EditCarForm() {
+    return ` <form class="row p-2" onsubmit="app.CarsController.editCar('${this.id}')">
 
                 <div class="form-floating mb-3 col-4">
                   <input required type="text" minLength="3" maxLength="15" class="form-control" id="carMake" name="make"
@@ -182,19 +182,19 @@ export class Car {
 
                 </div>
               </form>`
-    }
+  }
 
-    get ComputeEditButton() {
-        // NOTE check to see if there is an account logged in, if there is, are they the creator?
-        if (AppState.account == null || AppState.account.id != this.creatorId) return ''
+  get ComputeEditButton() {
+    // NOTE check to see if there is an account logged in, if there is, are they the creator?
+    if (AppState.account == null || AppState.account.id != this.creatorId) return ''
 
-        return `<button class="btn btn-primary" onclick="app.CarsController.setActive('${this.id}')">Edit Car ✏️</button>`
-    }
+    return `<button class="btn btn-primary" onclick="app.CarsController.setActive('${this.id}')">Edit Car ✏️</button>`
+  }
 
-    get ComputeDeleteButton() {
-        if (AppState.account == null || AppState.account.id != this.creatorId) return ''
-        return `<button class="btn btn-danger" onclick="app.CarsController.deleteCar('${this.id}')" >Delete Car 🚨</button>`
-    }
+  get ComputeDeleteButton() {
+    if (AppState.account == null || AppState.account.id != this.creatorId) return ''
+    return `<button class="btn btn-danger" onclick="app.CarsController.deleteCar('${this.id}')" >Delete Car 🚨</button>`
+  }
 
 }
 

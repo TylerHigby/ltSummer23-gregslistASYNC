@@ -6,9 +6,10 @@ import { Pop } from "../utils/Pop.js"
 import { setHTML } from "../utils/Writer.js"
 
 function _drawHouses() {
-  console.log('drawing houses')
-  this.getHouses
-
+  // console.log('drawing houses')
+  let template = ''
+  AppState.houses.forEach(house => template += house.HouseTemplate)
+  setHTML('houses', template)
 }
 export class HousesController {
   constructor() {
@@ -24,5 +25,19 @@ export class HousesController {
       pop.error(error.message)
     }
   }
+
+
+  async createHouse() {
+    window.event.preventDefault()
+    const form = window.event.target
+    const formData = getFormData(form)
+    await housesService.createHouse(formData)
+    console.log('create')
+    form.reset()
+  } catch(error) {
+    Pop.error(error.message)
+  }
+
+
 }
 
